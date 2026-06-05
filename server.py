@@ -487,4 +487,8 @@ async def translink_get_alerts(route: Optional[str] = None) -> str:
 # ─── Entry point ──────────────────────────────────────────────────────────────
 if __name__ == "__main__":
     import uvicorn
-    uvicorn.run(mcp.sse_app(), host="0.0.0.0", port=int(os.environ.get("PORT", 8000)))
+    from starlette.applications import Starlette
+    from starlette.routing import Mount
+
+    app = Starlette(routes=[Mount("/mcp", app=mcp.sse_app())])
+    uvicorn.run(app, host="0.0.0.0", port=int(os.environ.get("PORT", 8000)))
