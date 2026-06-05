@@ -229,7 +229,13 @@ async def lifespan(server: FastMCP):
 
 # ─── MCP Server ───────────────────────────────────────────────────────────────
 
-mcp = FastMCP("translink_mcp", lifespan=lifespan)
+from mcp.server.transport_security import TransportSecuritySettings
+
+mcp = FastMCP(
+    "translink_mcp",
+    lifespan=lifespan,
+    transport_security=TransportSecuritySettings(enable_dns_rebinding_protection=False),
+)
 
 
 # ─── Tool 1: Natural-language arrivals ────────────────────────────────────────
