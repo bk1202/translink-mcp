@@ -484,8 +484,7 @@ async def translink_get_alerts(route: Optional[str] = None) -> str:
     return "\n".join(lines)
 
 
-# ─── Entry point ──────────────────────────────────────────────────────────────
-if __name__ == "__main__":
+
 # ─── Entry point ──────────────────────────────────────────────────────────────
 if __name__ == "__main__":
     import uvicorn
